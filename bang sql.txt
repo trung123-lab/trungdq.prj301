@@ -1,0 +1,33 @@
+tOrder
+id PK varchar(4)
+date date
+name nvarchar(80)
+total float
+
+orderdetail
+id int identity
+productId varchar(8)
+unit_price float
+quantity int
+total float
+tOrderId varchar(4)
+
+  CREATE TABLE OrderDetail (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    name NVARCHAR(50),
+    price FLOAT,
+    quantity INT,
+	total FLOAT,
+    productid varchar(8),
+    tOrderid varchar(4),
+    FOREIGN KEY (productid) REFERENCES tbl_Product(Sku),
+    FOREIGN KEY (tOrderid) REFERENCES tOrder(id)
+);
+
+tbl_Product
+Sku varchar(8)
+name nvarchar(50)
+description nvarchar(200)
+unit_price float
+quantity int
+status bit
